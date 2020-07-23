@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import FormUserDetails from "./FormUserDetails";
-import FormPersonalDetails from "./FormPersonalDetails";
-import Confirm from "./Confirm";
-import Success from "./Success";
+import { Home } from "./Application/Home";
 
 export class UserForm extends Component {
   state = {
@@ -10,8 +8,7 @@ export class UserForm extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    occupation: "",
-    income: "",
+    password: ""
   };
 
   // Proceed to the next step
@@ -23,24 +20,14 @@ export class UserForm extends Component {
     });
   };
 
-  // Go back to the Prev step
-
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step - 1,
-    });
-  };
-
-  // Handle fields change
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, occupation, income } = this.state;
-    const values = { firstName, lastName, email, occupation, income };
+    const { firstName, lastName, email, password } = this.state;
+    const values = { firstName, lastName, email, password };
 
     switch (step) {
       case 1:
@@ -54,27 +41,12 @@ export class UserForm extends Component {
 
       case 2:
         return (
-          <FormPersonalDetails
+          <Home 
             nextStep={this.nextStep}
-            prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
           />
         );
-
-      case 3:
-        return (
-          <Confirm
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            values={values}
-          />
-        );
-
-      case 4:
-        return( 
-        <Success />
-      );
     }
   }
 }

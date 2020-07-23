@@ -1,19 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 // import './Application.scss'
 
-import '../../App.css';
+import "../../App.css";
 
-import { Header } from './Header'
-import { Balance } from './Balance'
-import { IncomeExpenses } from './IncomeExpenses'
-import { TransactionList } from './TransactionList'
-import { AddTransaction } from './AddTransaction'
-
-
+import { Header } from "./Header";
+import { Balance } from "./Balance";
+import { IncomeExpenses } from "./IncomeExpenses";
+import { TransactionList } from "./TransactionList";
+import { AddTransaction } from "./AddTransaction";
 
 export class Home extends Component {
-  
-
   render() {
     return (
       <div className="home">
@@ -25,6 +21,6 @@ export class Home extends Component {
           <AddTransaction />
         </div>
       </div>
-    )
+    );
   }
 }
