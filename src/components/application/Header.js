@@ -1,9 +1,11 @@
 import React from 'react'
+import loginImg from "../../Assets/login.png";
+
 
 const Header = () => {
     return (
         <div className="header">
-            <h1>SORAN</h1>
+            <img src={loginImg} />
         </div>
     )
 }

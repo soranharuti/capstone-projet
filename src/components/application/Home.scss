@@ -12,7 +12,7 @@ html {
 .container {
   width: 100%;
   height: 100vh;
-  background-color: #77c987;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,16 +38,13 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
-.header h1 {
-  font-family: "Muli", serif;
-  font-size: 6rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  color: #f46036;
-  text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
+.header img {
+  height: 150px;
+  width: 150px;
 }
 
 .balance {
@@ -242,7 +239,7 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #fff;
   padding: 0.4rem 0.4rem 0.4rem 0.7rem;
   border-radius: 0.3rem;
-  width: 32rem;
+  width: 20rem;
   display: flex;
   justify-content: space-between;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
@@ -257,7 +254,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .transaction-text {
-  width: 23rem;
+  width: 100%;
 }
 
 .transaction-amount {
@@ -274,37 +271,38 @@ input[type="number"]::-webkit-inner-spin-button {
   text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
   cursor: pointer;
   outline: none;
+  margin: 0;
 }
 
-@media (max-width: 1500px) {
-  html {
-    font-size: 58%;
-  }
+// @media (max-width: 1500px) {
+//   html {
+//     font-size: 58%;
+//   }
 
-  .app-wrapper {
-    width: 95%;
-    max-width: 140rem;
-    height: 85vh;
-  }
+//   .app-wrapper {
+//     width: 95%;
+//     max-width: 140rem;
+//     height: 85vh;
+//   }
 
-  .balance {
-    margin-top: 6rem;
-  }
+//   .balance {
+//     margin-top: 6rem;
+//   }
 
-  .income-expense {
-    margin-top: 7rem;
-  }
+//   .income-expense {
+//     margin-top: 7rem;
+//   }
 
-  .transaction-list {
-    max-height: 31rem;
-  }
+//   .transaction-list {
+//     max-height: 31rem;
+//   }
 
-  .transaction {
-    width: 30rem;
-  }
-}
+//   .transaction {
+//     width: 30rem;
+//   }
+// }
 
-@media (max-width: 1200px) {
+// @media (max-width: 1200px) {
   html {
     font-size: 52%;
   }
@@ -320,4 +318,4 @@ input[type="number"]::-webkit-inner-spin-button {
   .transaction {
     width: 28rem;
   }
-}
+// }
