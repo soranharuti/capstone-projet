@@ -2,7 +2,6 @@ import React from "react";
 import loginImg from "../../Assets/login.png";
 import axios from "axios";
 
-
 export class Register extends React.Component {
   state = {
     name: "",
@@ -11,17 +10,14 @@ export class Register extends React.Component {
   };
 
   handleChange = (event, type) => {
-    if (type === 'name') {
+    if (type === "name") {
       this.setState({ name: event.target.value });
-
     }
-    if (type === 'email') {
+    if (type === "email") {
       this.setState({ email: event.target.value });
-
     }
-    if (type === 'password') {
+    if (type === "password") {
       this.setState({ password: event.target.value });
-
     }
     // this.setState({ email: event.target.value });
     // this.setState({ password: event.target.value });
@@ -36,9 +32,14 @@ export class Register extends React.Component {
       password: this.state.password,
     };
 
-    axios.post(`http://localhost:8080/register`, user ).then((res) => {
+    axios.post(`http://localhost:8080/register`, user).then((res) => {
       console.log(res);
       console.log(res.data);
+      this.setState({
+        name: "",
+        email: "",
+        password: "",
+      });
     });
   };
 
@@ -48,7 +49,7 @@ export class Register extends React.Component {
         <div className="header">Register</div>
         <div className="content">
           <div className="image">
-            <img src={loginImg} alt="register"/>
+            <img src={loginImg} alt="register" />
           </div>
           <form className="form" onSubmit={this.handdleSubmit}>
             <div className="form-group">
@@ -57,7 +58,7 @@ export class Register extends React.Component {
                 type="text"
                 name="name"
                 placeholder="Full Name"
-                onChange={(e) => this.handleChange(e, 'name')}
+                onChange={(e) => this.handleChange(e, "name")}
               />
             </div>
             <div className="form-group">
@@ -66,17 +67,16 @@ export class Register extends React.Component {
                 type="text"
                 name="email"
                 placeholder="Email"
-                onChange={(e) => this.handleChange(e, 'email')}
+                onChange={(e) => this.handleChange(e, "email")}
               />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Password"
-                onChange={(e) => this.handleChange(e, 'password')}
-
+                onChange={(e) => this.handleChange(e, "password")}
               />
             </div>
 

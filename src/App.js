@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Main from "./components/login/Main";
 import Home from "./components/application/Home";
 
@@ -18,20 +18,20 @@ Axios.interceptors.request.use(
 // if (localStorage.getItem("token")) {
 //   Axios.defaults.headers.common["auth-token"] = localStorage.getItem("token");
 // }
-function PrivateRoute({ component: Component, authed, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        authed === true ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-        )
-      }
-    />
-  );
-}
+// function PrivateRoute({ component: Component, authed, ...rest }) {
+//   return (
+//     <Route
+//       {...rest}
+//       render={(props) =>
+//         authed === true ? (
+//           <Component {...props} />
+//         ) : (
+//           <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+//         )
+//       }
+//     />
+//   );
+// }
 export default function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
 

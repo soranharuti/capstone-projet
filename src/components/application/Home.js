@@ -7,6 +7,7 @@ import ExpenseList from "./ExpenseList";
 import { GlobalContextProvider } from "../../context/GlobalState";
 import "./Home.scss";
 import Axios from "axios";
+import Chart from "./Chart";
 
 const Home = ({ token }) => {
   const [userData, setUserData] = useState({
@@ -14,7 +15,6 @@ const Home = ({ token }) => {
     email: "",
     name: "",
   });
-  console.log(userData);
   useEffect(() => {
     async function fetchUserData(params) {
       const result = await Axios.get("http://localhost:8080/me", {
@@ -26,23 +26,49 @@ const Home = ({ token }) => {
     }
     fetchUserData();
   }, []);
-  console.log(userData.transactions);
+  const handleAddTransaction = async (payload) => {
+    const results = await Axios.post(
+      `http://localhost:8080/addTransaction`,
+      payload,
+      {
+        headers: {
+          "auth-token": token,
+        },
+      }
+    );
+    const newUserData = { ...userData, transactions: results.data };
+    setUserData(newUserData);
+  };
+  const handleDeleteTransaction = async (id) => {
+    const results = await Axios.post(
+      `http://localhost:8080/deleteTransaction`,
+      { id },
+      {
+        headers: {
+          "auth-token": token,
+        },
+      }
+    );
+    const newUserData = { ...userData, transactions: results.data };
+    setUserData(newUserData);
+  };
+
   const balance = userData.transactions.reduce(
-    (acc, transaction) => acc + transaction.amount,
+    (acc, transaction) => Number(acc) + Number(transaction.amount),
     0
   );
   const incomeTransactions = userData.transactions.filter(
     (transaction) => transaction.amount > 0
   );
   const income = incomeTransactions.reduce(
-    (acc, transaction) => acc + transaction.amount,
+    (acc, transaction) => Number(acc) + Number(transaction.amount),
     0
   );
   const expenseTransactions = userData.transactions.filter(
     (transaction) => transaction.amount < 0
   );
   const expense = expenseTransactions.reduce(
-    (acc, transaction) => acc + transaction.amount,
+    (acc, transaction) => Number(acc) + Number(transaction.amount),
     0
   );
 
@@ -50,11 +76,23 @@ const Home = ({ token }) => {
     <GlobalContextProvider>
       <div className="container">
         <div className="app-wrapper">
-          <Header />
+         
+          <Header name={userData.name} />
+
           <Balance balance={balance} income={income} expense={expense} />
-          <AddTransaction transactions={userData} />
-          <IncomeList incomeTransactions={incomeTransactions}/>
-          <ExpenseList expenseTransactions={expenseTransactions} />
+          <AddTransaction
+            transactions={userData}
+            sendTransaction={handleAddTransaction}
+          />
+          <IncomeList
+            incomeTransactions={incomeTransactions}
+            deleteTransaction={handleDeleteTransaction}
+          />
+          <ExpenseList
+            expenseTransactions={expenseTransactions}
+            deleteTransaction={handleDeleteTransaction}
+          />
+           <Chart totalExpense={expense} totalIncome={income} />
         </div>
       </div>
     </GlobalContextProvider>

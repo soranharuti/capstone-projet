@@ -41,6 +41,7 @@ router.post("/login", async (req, res) => {
   console.log(req.body)
   //Validated the data
   const { error } = loginValidation(req.body);
+  console.log(error)
   if (error) return res.status(400).send(error.details[0].message);
 
   //Checking if the email exists
@@ -84,7 +85,18 @@ router.post("/addTransaction", verify, async (req, res) => {
     id: uuidv4(),
   });
   await user.save();
-  res.send({});
+  res.send(user.transactions);
 });
 
+
+//Delete Transaction 
+router.post("/deleteTransaction", verify, async (req, res) => {
+  const token = req.headers["auth-token"];
+  const { _id } = jwt.decode(token);
+  const transactionId = req.body.id;
+  const user = await User.findById(_id);
+  user.transactions = user.transactions.filter((o)=>{return o.id !==transactionId })
+  await user.save();
+  res.send(user.transactions);
+});
 module.exports = router;
