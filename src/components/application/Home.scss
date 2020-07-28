@@ -40,6 +40,11 @@ html {
   align-items: center;
   height: 100%;
   width: 100%;
+  flex-direction: column;
+}
+
+.hello-name{
+  padding-bottom: 50px;
 }
 
 .header img {
@@ -74,10 +79,14 @@ html {
 .income-expense {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 10rem;
   font-family: "Muli", serif;
   text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
   text-align: right;
+}
+
+.chart-box {
+  width: 100%;
+  height: 100%;
 }
 
 .plus,
@@ -165,7 +174,7 @@ html {
   border-bottom: 0.2rem solid #FD7677;
 }
 
-.input-group input[type="submit"] {
+.input-group button[type="submit"] {
   width: 10rem;
   padding: 0.7rem;
   border: none;
@@ -182,15 +191,15 @@ html {
   text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
 }
 
-.input-group input[type="submit"]:active {
+.input-group button[type="submit"]:active {
   transform: translateY(0.3rem);
 }
 
-.income input[type="submit"] {
+.income button[type="submit"] {
   background-color: #1CB797;
 }
 
-.expense input[type="submit"] {
+.expense button[type="submit"] {
   background-color: #FD7677;
 }
 
@@ -271,9 +280,9 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 100%;
 }
 
-.transaction-amount {
-  transform: translateX(3rem);
-}
+// .transaction-amount {
+//   transform: translateX(3rem);
+// }
 
 .delete-btn {
   transform: translateX(4rem);

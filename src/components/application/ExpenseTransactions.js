@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../../context/GlobalState";
+import React from "react";
+
 
 const ExpenseTransaction = ({ expenseTransaction, deleteTransaction }) => {
-  console.log(expenseTransaction);
   return (
     <li className="transaction">
       <span className="transaction-text">{expenseTransaction.text}</span>

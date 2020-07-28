@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
-import Chart from './Chart'
+import React from "react";
+import Chart from "./Chart";
 const Balance = ({ balance = 0, income, expense }) => {
-
   return (
     <div className="balance">
       <h2>Your Balance</h2>
@@ -16,8 +15,9 @@ const Balance = ({ balance = 0, income, expense }) => {
           <p>${expense}</p>
         </div>
       </div>
-
-      <Chart />
+      <div className="chart-box">
+        <Chart totalExpense={expense} totalIncome={income} />
+      </div>
     </div>
   );
 };

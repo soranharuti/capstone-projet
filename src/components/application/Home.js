@@ -4,7 +4,6 @@ import Balance from "./Balance";
 import AddTransaction from "./AddTransaction";
 import IncomeList from "./IncomeList";
 import ExpenseList from "./ExpenseList";
-import { GlobalContextProvider } from "../../context/GlobalState";
 import "./Home.scss";
 import Axios from "axios";
 import Chart from "./Chart";
@@ -16,7 +15,7 @@ const Home = ({ token }) => {
     name: "",
   });
   useEffect(() => {
-    async function fetchUserData(params) {
+    async function fetchUserData() {
       const result = await Axios.get("http://localhost:8080/me", {
         headers: {
           "auth-token": token,
@@ -73,7 +72,7 @@ const Home = ({ token }) => {
   );
 
   return (
-    <GlobalContextProvider>
+    
       <div className="container">
         <div className="app-wrapper">
          
@@ -92,10 +91,10 @@ const Home = ({ token }) => {
             expenseTransactions={expenseTransactions}
             deleteTransaction={handleDeleteTransaction}
           />
-           <Chart totalExpense={expense} totalIncome={income} />
+           {/* <Chart totalExpense={expense} totalIncome={income} /> */}
         </div>
       </div>
-    </GlobalContextProvider>
+    
   );
 };
 

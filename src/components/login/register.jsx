@@ -33,8 +33,6 @@ export class Register extends React.Component {
     };
 
     axios.post(`http://localhost:8080/register`, user).then((res) => {
-      console.log(res);
-      console.log(res.data);
       this.setState({
         name: "",
         email: "",

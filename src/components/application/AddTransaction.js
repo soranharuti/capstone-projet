@@ -1,69 +1,8 @@
-import React, { useState, useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { GlobalContext } from "../../context/GlobalState";
+import React, { useState } from "react";
+
 
 const AddTransaction = ({ sendTransaction }) => {
-  // const { addIncome, addExpense } = useContext(GlobalContext);
-
-  // const [income, setIncome] = useState({
-  //   incomeText: "",
-  //   incomeAmount: 0,
-  // });
-
-  // const { incomeText, incomeAmount } = income;
-
-  // const onChangeIncome = (e) => {
-  //   setIncome({ ...income, [e.target.name]: e.target.value });
-  // };
-
-  // const onSubmitIncome = (e) => {
-  //   e.preventDefault();
-
-  //   if (incomeText !== "") {
-  //     const newIncomeTransaction = {
-  //       id: uuidv4(),
-  //       incomeText,
-  //       incomeAmount: incomeAmount * 1,
-  //     };
-
-  //     addIncome(newIncomeTransaction);
-
-  //     setIncome({
-  //       incomeText: "",
-  //       incomeAmount: 0,
-  //     });
-  //   }
-  // };
-
-  // const [expense, setExpense] = useState({
-  //   expenseText: "",
-  //   expenseAmount: 0,
-  // });
-
-  // const { expenseText, expenseAmount } = expense;
-
-  // const onChangeExpense = (e) => {
-  //   setExpense({ ...expense, [e.target.name]: e.target.value });
-  // };
-
-  // const onSubmitExpense = (e) => {
-  //   e.preventDefault();
-
-  //   if (expenseText !== "") {
-  //     const newExpenseTransaction = {
-  //       id: uuidv4(),
-  //       expenseText,
-  //       expenseAmount: expenseAmount * 1,
-  //     };
-
-  //     addExpense(newExpenseTransaction);
-
-  //     setExpense({
-  //       expenseText: "",
-  //       expenseAmount: 0,
-  //     });
-  //   }
-  // };
+  
   const [incomeText, setIncomeText] = useState("");
   const [incomeAmount, setIncomeAmount] = useState(0);
 
@@ -110,7 +49,7 @@ const AddTransaction = ({ sendTransaction }) => {
           autoComplete="off"
           onChange={handleIncomeAmountChange}
         />
-        <button
+        <button type="submit"
           disabled={!incomeText || !incomeAmount}
           onClick={() => handleAddTransaction("income")}
         >
@@ -136,7 +75,7 @@ const AddTransaction = ({ sendTransaction }) => {
             autoComplete="off"
             onChange={handleExpenseAmountChange}
           />
-          <button
+          <button type="submit"
             disabled={!expenseText || !expenseAmount}
             onClick={() => handleAddTransaction("expense")}
           >
